@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+
+        /*
+        const sumarArreglo = (arr) => {
+            return arr.reduce((a, b) => {
+                const newB = Array.isArray(b) ? sumarArreglo(b) : b;
+                return a + newB;
+            }, 0);
+        }
+
+        const myArr = [1, 2, 3, [1, 2, 3], 5, [5, 5]];
+
+        console.log(sumarArreglo(myArr));
+
+*/
+        const arr = [12,43,67,4];
+
+
+        function callback(array) {
+            let total = array.reduce((a, b) => a + b, 0);
+            let resultado=[];
+
+            let largo = array.length;
+            for (i = 0; i < largo; i++) {
+                let rel = 100 * array[i];
+                let to =rel / total;
+                resultado.push(parseInt(to));
+            }
+            return resultado;
+
+        }
+
+        console.log(callback(arr));
+    </script>
+
+</body>
+
+</html>

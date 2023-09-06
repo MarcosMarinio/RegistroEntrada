@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cdbootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cdbootstrap/css/cdb.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/cdbootstrap/js/cdb.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cdbootstrap/js/bootstrap.min.js"></script>
+  <script src="https://kit.fontawesome.com/9d1d9a82d2.js" crossorigin="anonymous"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- Creditos por el JavaScript y links src: https://www.devwares.com/blog/create-bootstrap-charts-using-bootstrap5/-->
+  <!-- Creditos por el backgroundColor: https://mdbootstrap.com/docs/b4/jquery/javascript/charts/-->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+  <div class="card chart-container">
+    <canvas id="chart"></canvas>
+  </div>
+  <style>
+    .chart-container {
+      width: 50%;
+      height: 50%;
+      margin: auto;
+    }
+  </style>
+
+  <script>
+
+
+    function callback(array) {
+      let total = array.reduce((a, b) => a + b, 0);
+      let resultado = [];
+
+      let largo = array.length;
+      for (i = 0; i < largo; i++) {
+        let rel = 100 * array[i];
+        let to = rel / total;
+        resultado.push(parseInt(to));
+      }
+      return resultado;
+
+    }
+
+    const lo = callback([1, 2, 3, 4]);
+    const ctx = document.getElementById("chart").getContext('2d');
+    const myChart = new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: [" Alumnos " + lo[0] + "%", "% Profesores", "% Visitantes", "% Funcionarios"],
+        datasets: [{
+          label: 'Personas',
+          backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1"],
+          hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5"],
+          borderColor: 'rgb(47, 128, 237)',
+          data: [1,2,3,4],
+
+        }]
+
+
+      }
+      
+    })
+
+
+
+
+  </script>
+
+  <!-- Formato Pie
+     const ctx = document.getElementById("chart").getContext('2d');
+      const myChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+          labels: ["rice", "yam", "tomato", "potato",
+          "beans", "maize", "oil"],
+          datasets: [{
+            label: 'food Items',
+            backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"],
+            hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774"],
+            borderColor: 'rgb(47, 128, 237)',
+            data: [30, 40, 20, 50, 80, 90, 20],
+          }]
+        },
+      }); -->
+
+  <!-- Formato Linea
+   const ctx = document.getElementById("chart").getContext('2d');
+      const myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ["sunday", "monday", "tuesday",
+          "wednesday", "thursday", "friday", "saturday"],
+          datasets: [{
+            label: 'Last week',
+            backgroundColor: 'rgba(161, 198, 247, 1)',
+            borderColor: 'rgb(47, 128, 237)',
+            data: [3000, 4000, 2000, 5000, 8000, 9000, 2000],
+          }]
+        },
+        options: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true,
+              }
+            }]
+          }
+        },
+      }); 
+     -->
+
+  <!-- 
+      Formato ola
+      const ctx = document.getElementById("chart").getContext('2d');
+      const myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ["rice", "yam", "tomato", "potato",
+          "beans", "maize", "oil"],
+          datasets: [{
+            label: 'food Items',
+            backgroundColor: 'rgba(161, 198, 247, 1)',
+            borderColor: 'rgb(47, 128, 237)',
+            data: [300, 400, 200, 500, 800, 900, 200],
+          }]
+        },
+        options: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true,
+              }
+            }]
+          }
+        },
+      });
+
+
+     -->
+
+
+
+</body>
+
+</html>
